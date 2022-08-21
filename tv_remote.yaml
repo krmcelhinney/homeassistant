@@ -1,0 +1,817 @@
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    color_type: blank-card
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity_id: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.toggle
+          service_data:
+            entity_id: media_player.lounge_tv_2
+        show_name: false
+        icon: mdi:power
+        size: 25%
+        state:
+          - value: 'on'
+            color: green
+          - value: 'off'
+            color: red
+      - type: custom:button-card
+        tap_action:
+          action: call-service
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_HOME
+        show_name: false
+        icon: mdi:home
+        size: 25%
+      - type: custom:button-card
+        tap_action:
+          action: call-service
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_EXIT
+        show_name: false
+        icon: mdi:home-export-outline
+        size: 25%
+  - type: custom:button-card
+    name: |
+      [[[
+        if(states['media_player.lounge_tv_2'].state == 'on') {
+          var src = states['media_player.lounge_tv_2'].attributes.source;
+          if(src == 'TV/HDMI') {
+            src = 'Broadcast TV';
+          }
+          return 'Currently playing - '+ src;
+        } else {
+          return 'TV is currently turned off';
+        }
+      ]]]
+    styles:
+      card:
+        - background-color: |
+            [[[
+              var src = states['media_player.lounge_tv_2'].attributes.source;
+              if(src == 'YouTube') { return '#CD201F'; }
+              if(src == 'Netflix') { return '#000000'; }
+              if(src == 'BINGE') { return '#70139F'; }
+              if(src == 'Prime Video') { return '#223040'; }
+              if(src == 'Kayo Sports') { return '#06E277'; }
+              if(src == 'Plex') { return '#202020'; }
+              if(src == 'ABC iview') { return '#40B8B6'; }
+              if(src == 'SBS On Demand') { return '#FDB717'; }
+              if(src == '7plus') { return '#EB1B23'; }
+              if(src == '9Now') { return '#FFFFFF'; }
+              if(src == '10 play') { return '#0049F4'; }
+              return 'var(--table-row-background-color)';
+            ]]]
+        - color: |
+            [[[
+              var src = states['media_player.lounge_tv_2'].attributes.source;
+              if(src == 'YouTube') { return '#FFFFFF'; }
+              if(src == 'Netflix') { return '#E50915'; }
+              if(src == 'BINGE') { return '#FFFFFF'; }
+              if(src == 'Prime Video') { return '#02A5DE'; }
+              if(src == 'Kayo Sports') { return '#002314'; }
+              if(src == 'Plex') { return '#FFFFFF'; }
+              if(src == 'ABC iview') { return '#FFFFFF'; }
+              if(src == 'SBS On Demand') { return '#2E2D2C'; }
+              if(src == '7plus') { return '#FFFFFF'; }
+              if(src == '9Now') { return '#0153A2'; }
+              if(src == '10 play') { return '#FFFFFF'; }
+              return 'var(--primary-text-color)';
+            ]]]
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: YouTube
+        entity_picture: /local/icons/channels/youtube.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: Netflix
+        entity_picture: /local/icons/channels/netflix.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: BINGE
+        entity_picture: /local/icons/channels/binge.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: Prime Video
+        entity_picture: /local/icons/channels/prime_video.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: Kayo Sports
+        entity_picture: /local/icons/channels/kayo.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: Plex
+        entity_picture: /local/icons/channels/plex.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: ABC iview
+        entity_picture: /local/icons/channels/abc_iview.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: SBS On Demand
+        entity_picture: /local/icons/channels/sbs.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: 7plus
+        entity_picture: /local/icons/channels/7plus.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: 9Now
+        entity_picture: /local/icons/channels/9now.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.select_source
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            source: 10 play
+        entity_picture: /local/icons/channels/10_play.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_CHUP
+        show_name: false
+        icon: mdi:arrow-up-circle-outline
+        size: 82%
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_EXIT+3000+KEY_TV+KEY_2+KEY_0
+        entity_picture: /local/icons/channels/tv_abc.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_EXIT+2000+KEY_TV+KEY_7+KEY_0
+        entity_picture: /local/icons/channels/tv_seven.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_EXIT+2000+KEY_TV+KEY_9+KEY_0
+        entity_picture: /local/icons/channels/tv_nine.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_EXIT+2000+KEY_TV+KEY_1+KEY_0
+        entity_picture: /local/icons/channels/tv_ten.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        color: rgb(108, 108, 108)
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_EXIT+2000+KEY_TV+KEY_3+KEY_0
+        entity_picture: /local/icons/channels/tv_sbs.png
+        show_name: false
+        show_icon: false
+        show_entity_picture: true
+        style:
+          - padding: 0px
+        styles:
+          entity_picture:
+            - width: 100%
+            - padding-bottom: 0%
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_CHDOWN
+        show_name: false
+        icon: mdi:arrow-down-circle-outline
+        size: 80%
+  - type: custom:button-card
+    color_type: blank-card
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_UP
+        show_name: false
+        icon: mdi:arrow-up
+        size: 25%
+      - type: custom:button-card
+        color_type: blank-card
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_LEFT
+        show_name: false
+        icon: mdi:arrow-left
+        size: 25%
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_ENTER
+        show_name: false
+        icon: mdi:check-circle-outline
+        size: 25%
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_RIGHT
+        show_name: false
+        icon: mdi:arrow-right
+        size: 25%
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: blank-card
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_DOWN
+        show_name: false
+        icon: mdi:arrow-down
+        size: 25%
+      - type: custom:button-card
+        color_type: blank-card
+  - type: custom:button-card
+    color_type: blank-card
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: media_player.lounge
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: script.sonos_toggle
+        show_name: false
+        icon: mdi:volume-off
+        size: 25%
+      - type: custom:button-card
+        entity: media_player.lounge
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.volume_down
+          service_data:
+            entity_id: media_player.lounge
+        show_name: false
+        icon: mdi:volume-minus
+        size: 25%
+      - type: custom:button-card
+        entity: media_player.lounge
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.volume_up
+          service_data:
+            entity_id: media_player.lounge
+        show_name: false
+        icon: mdi:volume-plus
+        size: 25%
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_PAUSE
+        show_name: false
+        icon: mdi:pause
+        size: 25%
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_PLAY
+        show_name: false
+        icon: mdi:play
+        size: 25%
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_RETURN
+        show_name: false
+        icon: mdi:arrow-u-left-top
+        size: 25%
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_REWIND
+        show_name: false
+        icon: mdi:rewind
+        size: 25%
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_FF
+        show_name: false
+        icon: mdi:fast-forward
+        size: 25%
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        color: var(--primary-text-color)
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_INFO
+        show_name: false
+        icon: mdi:information-variant
+        size: 25%
+  - type: custom:button-card
+    color_type: blank-card
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_1
+        name: 1
+        show_icon: false
+        styles:
+          name:
+            - padding-top": 10px
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_2
+        name: 2
+        show_icon: false
+        styles:
+          name:
+            - padding-top": 10px
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_3
+        name: 3
+        show_icon: false
+        styles:
+          name:
+            - padding-top": 10px
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_4
+        name: 4
+        show_icon: false
+        styles:
+          name:
+            - padding-top": 10px
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_5
+        name: 5
+        show_icon: false
+        styles:
+          name:
+            - padding-top": 10px
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_6
+        name: 6
+        show_icon: false
+        styles:
+          name:
+            - padding-top": 10px
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_7
+        name: 7
+        show_icon: false
+        styles:
+          name:
+            - padding-top": 10px
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_8
+        name: 8
+        show_icon: false
+        styles:
+          name:
+            - padding-top": 10px
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_9
+        name: 9
+        show_icon: false
+        styles:
+          name:
+            - padding-top": 10px
+      - type: custom:button-card
+        entity: media_player.lounge_tv_2
+        tap_action:
+          action: call-service
+          haptic: medium
+          service: media_player.play_media
+          service_data:
+            entity_id: media_player.lounge_tv_2
+            media_content_type: send_key
+            media_content_id: KEY_0
+        name: '0'
+        show_icon: false
+        styles:
+          name:
+            - padding-top": 10px
